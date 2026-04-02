@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_BASE } from '../config';
 import './Home.css';
 
 const SERVICES = [
@@ -107,7 +108,7 @@ export default function Home() {
   const [stats, setStats] = useState({ reviewCount: 0, avgRating: 0 });
 
   useEffect(() => {
-    fetch('/api/reviews')
+    fetch(`${API_BASE}/api/reviews`)
       .then((r) => r.json())
       .then((reviews) => {
         if (!reviews.length) return;

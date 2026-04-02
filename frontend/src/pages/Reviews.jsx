@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE } from '../config';
 import './Reviews.css';
 
 // ── Star rating input component ───────────────────────────────────────────────
@@ -71,7 +72,7 @@ export default function Reviews() {
 
   async function loadReviews() {
     try {
-      const res = await fetch('/api/reviews');
+      const res = await fetch(`${API_BASE}/api/reviews`);
       setReviews(await res.json());
     } catch {
       // silently fail — grid will just be empty
@@ -95,7 +96,7 @@ export default function Reviews() {
 
     setSubmitting(true);
     try {
-      const res = await fetch('/api/reviews', {
+      const res = await fetch(`${API_BASE}/api/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -115,7 +116,7 @@ export default function Reviews() {
   async function handleDelete(id) {
     if (!window.confirm('Delete this review? This cannot be undone.')) return;
     try {
-      const res = await fetch(`/api/reviews/${id}`, {
+      const res = await fetch(`${API_BASE}/api/reviews/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

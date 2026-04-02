@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE } from '../config';
 import './Examples.css';
 
 export default function Examples() {
@@ -19,7 +20,7 @@ export default function Examples() {
 
   async function loadItems() {
     try {
-      const res = await fetch('/api/portfolio');
+      const res = await fetch(`${API_BASE}/api/portfolio`);
       setItems(await res.json());
     } catch {
       // silent fail
@@ -52,7 +53,7 @@ export default function Examples() {
       fd.append('description', form.description);
       fd.append('image',       imageFile);
 
-      const res = await fetch('/api/portfolio', {
+      const res = await fetch(`${API_BASE}/api/portfolio`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: fd,
@@ -76,7 +77,7 @@ export default function Examples() {
   async function handleDelete(id) {
     if (!window.confirm('Delete this portfolio item? This cannot be undone.')) return;
     try {
-      const res = await fetch(`/api/portfolio/${id}`, {
+      const res = await fetch(`${API_BASE}/api/portfolio/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -200,7 +201,7 @@ export default function Examples() {
             {items.map((item) => (
               <article className="portfolio-card" key={item.id}>
                 <div className="portfolio-img-wrap">
-                  <img src={item.image_url} alt={item.title} loading="lazy" />
+                  <img src={`${API_BASE}${item.image_url}`} alt={item.title} loading="lazy" />
                   <div className="portfolio-overlay">
                     <span className="portfolio-overlay-label">
                       {item.title}

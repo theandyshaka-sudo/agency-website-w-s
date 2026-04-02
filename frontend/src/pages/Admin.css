@@ -1,0 +1,150 @@
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(140deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 24px 60px;
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 52px 44px;
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+}
+
+/* Lock icon */
+.admin-lock-icon {
+  width: 68px;
+  height: 68px;
+  background: rgba(201,162,39,0.1);
+  border: 2px solid rgba(201,162,39,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin: 0 auto 22px;
+}
+
+/* Check icon (logged in) */
+.admin-check {
+  width: 68px;
+  height: 68px;
+  background: #28a745;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 0 auto 22px;
+}
+
+.admin-card h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.admin-card > p,
+.admin-logged-in-card > p {
+  font-size: 0.92rem;
+  color: var(--gray);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* ── Login form ──────────────────────────────────────────────────────────────── */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.pw-wrap {
+  position: relative;
+  display: flex;
+}
+
+.pw-wrap input {
+  flex: 1;
+  padding-right: 44px;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.pw-toggle:hover { color: var(--navy); }
+
+.admin-submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.admin-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gray);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.admin-back-link:hover { color: var(--navy); }
+
+/* ── Logged-in state ─────────────────────────────────────────────────────────── */
+.admin-logged-in-card { /* inherits .admin-card */ }
+
+.admin-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-links .btn {
+  justify-content: center;
+  padding: 14px;
+}
+
+.admin-logout-text {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 0.87rem;
+  font-family: var(--font);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.admin-logout-text:hover { color: #b02a37; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .admin-card {
+    padding: 36px 24px;
+  }
+}
